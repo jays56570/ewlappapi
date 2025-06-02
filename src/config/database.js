@@ -1,25 +1,16 @@
-const sql = require('mssql');
-
-const config = {
-  user: "msspl",
-  password: "R#msspl109",
-  server: "103.20.215.109",
-  port: 9851,             
-  database: "iDMS",
-  options: {
-    encrypt: false,       
-    enableArithAbort: true,
-  },
-};
+const mysql = require('mysql2/promise');
+require('dotenv').config(); 
+const pool = mysql.createPool({
+  host: process.env.DB_HOST || 'localhost',
+  user: process.env.DB_USER || 'root',
+  password: process.env.DB_PASS || '',
+  database: process.env.DB_NAME || 'ewl',
+  port: process.env.DB_PORT ? parseInt(process.env.DB_PORT) : 3306
+});
 
 async function getConnection() {
-  try {
-    const pool = await sql.connect(config);
-    return pool;
-  } catch (error) {
-    console.error('Database connection error:', error);
-    throw error;
-  }
+  return pool;
 }
 
-module.exports = { getConnection, sql };
+module.exports = { getConnection };
+

@@ -5,9 +5,9 @@
   "scripts": {
     "swagger:generate": "node src/swagger.js",
     "build": "esbuild src/server.js --bundle --platform=node --outfile=dist/bundle.js ",
-    "start": "node dist/bundle.js",
     "dev": "nodemon src/server.js",
-    "swagger": "node src/swagger.js"
+    "swagger": "node src/swagger.js",
+    "start": "node server.js"
   },
   "dependencies": {
     "bcryptjs": "^2.4.3",
@@ -21,7 +21,7 @@
     "helmet": "^7.1.0",
     "jsonwebtoken": "^9.0.2",
     "moment": "^2.30.1",
-    "mssql": "^10.0.1",
+    "mysql2": "^3.14.1",
     "nodemailer": "^6.10.0",
     "pdfkit": "^0.17.1",
     "pdfkit-table": "^0.1.99",
